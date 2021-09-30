@@ -111,7 +111,7 @@ type
     FAborted: Boolean;
     State: TvwPrinterState;
     DC: HDC;
-    DevMode: {$if lcl_fullversion >= 1080000} PDeviceModeW {$else} PDeviceMode {$ifend};
+    DevMode: {$IFDEF MSWINDOWS}{$if lcl_fullversion >= 1080000} PDeviceModeW {$else} PDeviceMode {$ifend}{$ELSE} PDeviceMode {$ENDIF};
     DeviceMode: HGLOBAL;
     procedure SetState(Value: TvwPrinterState);
     function GetHandle: HDC;
